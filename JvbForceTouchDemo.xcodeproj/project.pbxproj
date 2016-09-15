@@ -12,6 +12,8 @@
 		C81D2DFB1D8A91F80055F965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DF91D8A91F80055F965 /* Main.storyboard */; };
 		C81D2DFD1D8A91F80055F965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DFC1D8A91F80055F965 /* Assets.xcassets */; };
 		C81D2E001D8A91F80055F965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DFE1D8A91F80055F965 /* LaunchScreen.storyboard */; };
+		C81D2E081D8A927B0055F965 /* ForceTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D2E071D8A927B0055F965 /* ForceTouchView.swift */; };
+		C8F4FC731D8B250600741A9A /* ForceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F4FC721D8B250600741A9A /* ForceGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C81D2DFC1D8A91F80055F965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C81D2DFF1D8A91F80055F965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C81D2E011D8A91F80055F965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C81D2E071D8A927B0055F965 /* ForceTouchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceTouchView.swift; sourceTree = "<group>"; };
+		C8F4FC721D8B250600741A9A /* ForceGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				C81D2DF51D8A91F80055F965 /* AppDelegate.swift */,
 				C81D2DF71D8A91F80055F965 /* ViewController.swift */,
+				C81D2E071D8A927B0055F965 /* ForceTouchView.swift */,
+				C8F4FC721D8B250600741A9A /* ForceGestureRecognizer.swift */,
 				C81D2DF91D8A91F80055F965 /* Main.storyboard */,
 				C81D2DFC1D8A91F80055F965 /* Assets.xcassets */,
 				C81D2DFE1D8A91F80055F965 /* LaunchScreen.storyboard */,
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					C81D2DF11D8A91F80055F965 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = WTKD2M57Q2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C81D2DF81D8A91F80055F965 /* ViewController.swift in Sources */,
+				C81D2E081D8A927B0055F965 /* ForceTouchView.swift in Sources */,
 				C81D2DF61D8A91F80055F965 /* AppDelegate.swift in Sources */,
+				C8F4FC731D8B250600741A9A /* ForceGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WTKD2M57Q2;
 				INFOPLIST_FILE = JvbForceTouchDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jvb.JvbForceTouchDemo;
@@ -270,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WTKD2M57Q2;
 				INFOPLIST_FILE = JvbForceTouchDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jvb.JvbForceTouchDemo;
@@ -297,6 +308,7 @@
 				C81D2E061D8A91F80055F965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
