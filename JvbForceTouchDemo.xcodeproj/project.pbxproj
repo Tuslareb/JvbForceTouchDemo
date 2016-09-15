@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C81D2DF61D8A91F80055F965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D2DF51D8A91F80055F965 /* AppDelegate.swift */; };
+		C81D2DF81D8A91F80055F965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D2DF71D8A91F80055F965 /* ViewController.swift */; };
+		C81D2DFB1D8A91F80055F965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DF91D8A91F80055F965 /* Main.storyboard */; };
+		C81D2DFD1D8A91F80055F965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DFC1D8A91F80055F965 /* Assets.xcassets */; };
+		C81D2E001D8A91F80055F965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81D2DFE1D8A91F80055F965 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C81D2DF21D8A91F80055F965 /* JvbForceTouchDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JvbForceTouchDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81D2DF51D8A91F80055F965 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C81D2DF71D8A91F80055F965 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C81D2DFA1D8A91F80055F965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C81D2DFC1D8A91F80055F965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C81D2DFF1D8A91F80055F965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C81D2E011D8A91F80055F965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C81D2DEF1D8A91F80055F965 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C81D2DE91D8A91F70055F965 = {
+			isa = PBXGroup;
+			children = (
+				C81D2DF41D8A91F80055F965 /* JvbForceTouchDemo */,
+				C81D2DF31D8A91F80055F965 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C81D2DF31D8A91F80055F965 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C81D2DF21D8A91F80055F965 /* JvbForceTouchDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C81D2DF41D8A91F80055F965 /* JvbForceTouchDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C81D2DF51D8A91F80055F965 /* AppDelegate.swift */,
+				C81D2DF71D8A91F80055F965 /* ViewController.swift */,
+				C81D2DF91D8A91F80055F965 /* Main.storyboard */,
+				C81D2DFC1D8A91F80055F965 /* Assets.xcassets */,
+				C81D2DFE1D8A91F80055F965 /* LaunchScreen.storyboard */,
+				C81D2E011D8A91F80055F965 /* Info.plist */,
+			);
+			path = JvbForceTouchDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C81D2DF11D8A91F80055F965 /* JvbForceTouchDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C81D2E041D8A91F80055F965 /* Build configuration list for PBXNativeTarget "JvbForceTouchDemo" */;
+			buildPhases = (
+				C81D2DEE1D8A91F80055F965 /* Sources */,
+				C81D2DEF1D8A91F80055F965 /* Frameworks */,
+				C81D2DF01D8A91F80055F965 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JvbForceTouchDemo;
+			productName = JvbForceTouchDemo;
+			productReference = C81D2DF21D8A91F80055F965 /* JvbForceTouchDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C81D2DEA1D8A91F70055F965 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "J.J.A.P. van Breukelen";
+				TargetAttributes = {
+					C81D2DF11D8A91F80055F965 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C81D2DED1D8A91F70055F965 /* Build configuration list for PBXProject "JvbForceTouchDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C81D2DE91D8A91F70055F965;
+			productRefGroup = C81D2DF31D8A91F80055F965 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C81D2DF11D8A91F80055F965 /* JvbForceTouchDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C81D2DF01D8A91F80055F965 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C81D2E001D8A91F80055F965 /* LaunchScreen.storyboard in Resources */,
+				C81D2DFD1D8A91F80055F965 /* Assets.xcassets in Resources */,
+				C81D2DFB1D8A91F80055F965 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C81D2DEE1D8A91F80055F965 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C81D2DF81D8A91F80055F965 /* ViewController.swift in Sources */,
+				C81D2DF61D8A91F80055F965 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C81D2DF91D8A91F80055F965 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C81D2DFA1D8A91F80055F965 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C81D2DFE1D8A91F80055F965 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C81D2DFF1D8A91F80055F965 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C81D2E021D8A91F80055F965 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C81D2E031D8A91F80055F965 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C81D2E051D8A91F80055F965 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JvbForceTouchDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jvb.JvbForceTouchDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C81D2E061D8A91F80055F965 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JvbForceTouchDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jvb.JvbForceTouchDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C81D2DED1D8A91F70055F965 /* Build configuration list for PBXProject "JvbForceTouchDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C81D2E021D8A91F80055F965 /* Debug */,
+				C81D2E031D8A91F80055F965 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C81D2E041D8A91F80055F965 /* Build configuration list for PBXNativeTarget "JvbForceTouchDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C81D2E051D8A91F80055F965 /* Debug */,
+				C81D2E061D8A91F80055F965 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C81D2DEA1D8A91F70055F965 /* Project object */;
+}
