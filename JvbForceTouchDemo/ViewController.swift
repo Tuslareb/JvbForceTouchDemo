@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController {
     
     
     @IBOutlet weak var forceTouchView: ForceTouchView!
+    
+    let maxScaleFactor:CGFloat = 0.2
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class ViewController: UIViewController {
         switch gesture.state{
         case .began:
             print("Long press received")
+            
         case .ended:
             print("Long press ended")
         default: break 
@@ -43,7 +47,32 @@ class ViewController: UIViewController {
     
     func forceTouchAction(gesture: ForceGestureRecognizer) {
         
+        print("maxValue is \(gesture.maxValue)")
         print(gesture.forceValue)
+        if gesture.forceValue > 1{
+            
+                let scaleFactor = 1 + (((gesture.forceValue - 1) / gesture.maxValue) * maxScaleFactor)
+            
+                let scale = CGAffineTransform(scaleX: scaleFactor ,y: scaleFactor)
+                forceTouchView.transform = scale
+            
+            if gesture.forceValue > 5{
+                AudioServicesPlaySystemSound(1520)
+                gesture.isEnabled = false
+                let scale = CGAffineTransform(scaleX: 1, y: 1)
+                forceTouchView.transform = scale
+                gesture.isEnabled = true
+            }
+        }else{
+            let scale = CGAffineTransform(scaleX: 1, y: 1)
+            forceTouchView.transform = scale
+        }
+        
+        if gesture.state == .ended{
+            let scale = CGAffineTransform(scaleX: 1, y: 1)
+            forceTouchView.transform = scale
+
+        }
     }
 
 }

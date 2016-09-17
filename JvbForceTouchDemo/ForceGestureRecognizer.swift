@@ -13,7 +13,7 @@ import UIKit.UIGestureRecognizerSubclass
 class ForceGestureRecognizer: UIGestureRecognizer {
     
     var forceValue: CGFloat = 0
-    
+    var maxValue: CGFloat!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
@@ -43,5 +43,13 @@ class ForceGestureRecognizer: UIGestureRecognizer {
             return
         }
         forceValue = touch.force
+        maxValue = touch.maximumPossibleForce
+    }
+    
+    //This function is called automatically by UIGestureRecognizer when our state is set to .Ended. We want to use this function to reset our internal state.
+    public override func reset() {
+        super.reset()
+        print("reset")
+        forceValue = 0.0
     }
 }
