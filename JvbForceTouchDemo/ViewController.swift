@@ -14,18 +14,23 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var forceTouchView: ForceTouchView!
 
+    let maxScaleFactor:CGFloat = 0.3 //the maximum scale of the visual feedback effect
+    let pressDurationBeforeFired = 0.5 //used when no force touch capability is available
+    let forcePercentageBeforeFired: CGFloat = 0.9 //used when force touch capability is available
     
-    let maxScaleFactor:CGFloat = 0.3
-    let pressDurationBeforeFired = 0.5
+    //create the needed layers
     var feedbackLayer = CALayer()
     var orangeLayer = CALayer()
+    
+    //this highlights the view as long as it is pressed down
     var pressed: Bool = false {
         
         willSet{
             orangeLayer.backgroundColor = newValue ? UIColor.init(colorLiteralRed: 255/255, green: 107/255, blue: 40/255, alpha: 1).cgColor : UIColor.orange.cgColor
         }
     }
-
+    
+    
     var longPressRecognizer: UILongPressGestureRecognizer!
     var timer: Timer!
 
@@ -34,20 +39,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(gesture:)))
-        longPressRecognizer.minimumPressDuration = 0.0001
-        forceTouchView.addGestureRecognizer(longPressRecognizer)
+        if #available(iOS 9, *){
+            
+            if traitCollection.forceTouchCapability == .available{
+                print("force touch capability on this device")
+                let forceTouchRecognizer = ForceGestureRecognizer(target: self, action: #selector(forceTouchAction(gesture:)))
+                forceTouchView.addGestureRecognizer(forceTouchRecognizer)
+            }
+            else {
+                print("no force touch capability on this device")
+                longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(gesture:)))
+                longPressRecognizer.minimumPressDuration = 0.0001
+                forceTouchView.addGestureRecognizer(longPressRecognizer)
+            }
+        }
         
-        let forceTouchRecognizer = ForceGestureRecognizer(target: self, action: #selector(forceTouchAction(gesture:)))
-        //forceTouchView.addGestureRecognizer(forceTouchRecognizer)
-        
+        //give our layers rounded corners
         orangeLayer.cornerRadius = 20
         feedbackLayer.cornerRadius = 20
         
+        //color our layers and make the feedbacklayer slightly transparant
         feedbackLayer.backgroundColor = UIColor.orange.cgColor
         orangeLayer.backgroundColor = UIColor.orange.cgColor
         feedbackLayer.opacity = 0.8
 
+        //add a sublayer that acts as our 'normal' state layer and put the feebbacklayer behind this
         forceTouchView.layer.addSublayer(orangeLayer)
         forceTouchView.layer.insertSublayer(feedbackLayer, below: orangeLayer)
 
@@ -73,10 +89,10 @@ class ViewController: UIViewController {
         
         switch gesture.state{
         case .began:
-            print("Long press received")
-            //timer = Timer(timeInterval: 0.1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            //start a timer when the user starts holding down on the view and call timerAction every 0.05 seconds
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(timerAction), userInfo: NSDate.timeIntervalSinceReferenceDate, repeats: true)
         case .ended:
+            //invalidate the timer when the user lifts off
             print("Long press ended")
             timer.invalidate()
         default: break 
@@ -85,6 +101,7 @@ class ViewController: UIViewController {
     
     func forceTouchAction(gesture: ForceGestureRecognizer) {
         
+        //a force of 1 counts as 'normal' pressure. We only want visual feedback when the pressure is more than normal.
         print("force applied: \(gesture.forceValue)")
         if gesture.forceValue > 1{
             
@@ -93,22 +110,27 @@ class ViewController: UIViewController {
             print("percentage is \(percentage)")
             giveVisualFeedbackForPercentage(percentage: percentage)
 
-
-            
-            if percentage > 0.95{
+            if percentage > forcePercentageBeforeFired{
+                
+                //give taptic feedback. Caution: this is a private API!
                 AudioServicesPlaySystemSound(1520)
+                
+                //reset the visual state to normal condition and disable the gesture recognizer
                 gesture.isEnabled = false
-                //feedbackLayer.transform = CATransform3DMakeScale(1, 1, 1)
                 giveVisualFeedbackForPercentage(percentage: 0)
-                gesture.isEnabled = true
                 pressed = false
+                
+                //enable the gesture again for the 'next' round
+                gesture.isEnabled = true
+                
             }
         }
         
         if gesture.state == .ended{
+            
+            //reset the visual state to normal condition in case user lifts finger before hitting the force target
             giveVisualFeedbackForPercentage(percentage: 0)
             pressed = false
-
         }
     }
     
@@ -128,11 +150,10 @@ class ViewController: UIViewController {
             }
         }
      
-        //print("timer fired")
     }
     
-    
-    func giveVisualFeedbackForPercentage(percentage: CGFloat) {
+    ///scales the feedbackLayer to a given percentage.
+    private func giveVisualFeedbackForPercentage(percentage: CGFloat) {
         
         let scaleFactor = 1 + (percentage * maxScaleFactor)
         feedbackLayer.transform = CATransform3DMakeScale(scaleFactor, scaleFactor, 1)
