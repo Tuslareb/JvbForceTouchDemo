@@ -10,19 +10,18 @@ import UIKit
 
 class ForceTouchView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    /**
+     //Just for demonstation purposes: we could use the force property of UITouch directly in the UIView subclass.
+     
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     
+     guard let touch = touches.first else {return}
+     
+     print(touch.force)
+     }
+
+     */
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//        guard let touch = touches.first else {return}
-//        
-//        print(touch.force)
-//    }
+    
 
 }
