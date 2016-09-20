@@ -31,7 +31,8 @@ class ViewController: UIViewController {
     }
     
     
-    var longPressRecognizer: UILongPressGestureRecognizer!
+    var longPressRecognizer: UILongPressGestureRecognizer?
+    var forceTouchRecognizer: ForceGestureRecognizer?
     var timer: Timer!
 
     
@@ -43,14 +44,14 @@ class ViewController: UIViewController {
             
             if traitCollection.forceTouchCapability == .available{
                 print("force touch capability on this device")
-                let forceTouchRecognizer = ForceGestureRecognizer(target: self, action: #selector(forceTouchAction(gesture:)))
-                forceTouchView.addGestureRecognizer(forceTouchRecognizer)
+                forceTouchRecognizer = ForceGestureRecognizer(target: self, action: #selector(forceTouchAction(gesture:)))
+                forceTouchView.addGestureRecognizer(forceTouchRecognizer!)
             }
             else {
                 print("no force touch capability on this device")
                 longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(gesture:)))
-                longPressRecognizer.minimumPressDuration = 0.0001
-                forceTouchView.addGestureRecognizer(longPressRecognizer)
+                longPressRecognizer!.minimumPressDuration = 0.0001
+                forceTouchView.addGestureRecognizer(longPressRecognizer!)
             }
         }
         
@@ -75,6 +76,53 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 9, *){
+            
+            //3D touch capability changed, so react to this change accordingly
+            if traitCollection.forceTouchCapability != previousTraitCollection?.forceTouchCapability {
+
+                //3D touch capability is now turned on
+                if traitCollection.forceTouchCapability == .available{
+                    
+                    if let ftr = forceTouchRecognizer{
+                        //the recognizer already existed but was disabled. Enable it.
+                        ftr.isEnabled = true
+                    }
+                    else{
+                        //the app apparently started without 3D touch enabled, so the 3D touch gestureRecognizer was never initialized. Do this now.
+                        forceTouchRecognizer = ForceGestureRecognizer(target: self, action: #selector(forceTouchAction(gesture:)))
+                        forceTouchView.addGestureRecognizer(forceTouchRecognizer!)
+                    }
+                    
+                    //disable long press recognizer
+                    if let lpr = longPressRecognizer { lpr.isEnabled = false }
+                }
+                
+                //3D touch capability is now turned off.
+                else{
+                    
+                    //the recognizer already existed but was disabled. Enable it
+                    if let lpr = longPressRecognizer {
+                        lpr.isEnabled = true
+                    }
+                    else{
+                        //the app apparently started with 3D touch enabled, so the longPress gestureRecognizer was never initialized. Do this now.
+                        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(gesture:)))
+                        longPressRecognizer!.minimumPressDuration = 0.0001
+                        forceTouchView.addGestureRecognizer(longPressRecognizer!)
+                    }
+                    
+                    //disable 3D touch recognizer
+                    if let ftr = forceTouchRecognizer { ftr.isEnabled = false }
+                }
+            }
+            
+        }
+    }
+    
     
     override func viewDidLayoutSubviews() {
         
@@ -91,10 +139,13 @@ class ViewController: UIViewController {
         case .began:
             //start a timer when the user starts holding down on the view and call timerAction every 0.05 seconds
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(timerAction), userInfo: NSDate.timeIntervalSinceReferenceDate, repeats: true)
+            pressed = true
         case .ended:
             //invalidate the timer when the user lifts off
             print("Long press ended")
             timer.invalidate()
+            giveVisualFeedbackForPercentage(percentage: 0)
+            pressed = false
         default: break 
         }
     }
@@ -146,7 +197,7 @@ class ViewController: UIViewController {
             
             if percentage > 1 {
                 giveVisualFeedbackForPercentage(percentage: 0)
-                longPressRecognizer.state = .ended
+                longPressRecognizer!.state = .ended
             }
         }
      

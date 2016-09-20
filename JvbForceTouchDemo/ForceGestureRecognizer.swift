@@ -47,7 +47,7 @@ class ForceGestureRecognizer: UIGestureRecognizer {
         maxValue = touch.maximumPossibleForce
     }
     
-    //This is called when our state is set to .Ended. 
+    //This is called when our state is set to .ended. 
     public override func reset() {
         super.reset()
         print("reset")
