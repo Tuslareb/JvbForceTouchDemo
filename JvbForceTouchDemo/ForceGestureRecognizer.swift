@@ -6,8 +6,9 @@
 //  Copyright © 2016 J.J.A.P. van Breukelen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+//we need this import because we want to override the methods that are declared in the UIGestureRecognizerSubclass class extension of UIGestureRecognizer
 import UIKit.UIGestureRecognizerSubclass
 
 @available(iOS 9.0, *)
@@ -18,31 +19,37 @@ class ForceGestureRecognizer: UIGestureRecognizer {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesBegan(touches, with: event)
-        state = .began
         handleForceWithTouches(touches: touches)
+        state = .began
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesMoved(touches, with: event)
-        state = .changed
         handleForceWithTouches(touches: touches)
+        state = .changed
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesEnded(touches, with: event)
-        state = .ended
         handleForceWithTouches(touches: touches)
+        state = .ended
     }
     
     func handleForceWithTouches(touches: Set<UITouch>) {
+        
+        //only do something is one touch is received
         if touches.count != 1 {
             state = .failed
             return
         }
+        
+        //check if touch is valid, otherwise set state to failed and return
         guard let touch = touches.first else {
             state = .failed
             return
         }
+        
+        //if everything is ok, set our variables. 
         forceValue = touch.force
         maxValue = touch.maximumPossibleForce
     }
