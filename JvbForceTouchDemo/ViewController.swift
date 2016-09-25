@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var forceTouchView: ForceTouchView!
 
-    let maxScaleFactor:CGFloat = 0.3 //the maximum scale of the visual feedback effect
+    let maxScaleFactor: CGFloat = 0.3 //the maximum scale of the visual feedback effect
     let pressDurationBeforeFired = 0.5 //used when no force touch capability is available
     let forcePercentageBeforeFired: CGFloat = 0.9 //used when force touch capability is available
     
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     var feedbackLayer = CALayer()
     var orangeLayer = CALayer()
     
-    //this highlights the view as long as it is pressed down
+    //this property with an observer highlights the view as long as it is pressed down
     var pressed: Bool = false {
         
         willSet{
@@ -137,15 +137,19 @@ class ViewController: UIViewController {
         
         switch gesture.state{
         case .began:
+            
             //start a timer when the user starts holding down on the view and call timerAction every 0.05 seconds
             timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(timerAction), userInfo: NSDate.timeIntervalSinceReferenceDate, repeats: true)
             pressed = true
+            
         case .ended:
+            
             //invalidate the timer when the user lifts off
             print("Long press ended")
             timer.invalidate()
             giveVisualFeedbackForPercentage(percentage: 0)
             pressed = false
+            
         default: break 
         }
     }
@@ -207,6 +211,8 @@ class ViewController: UIViewController {
     private func giveVisualFeedbackForPercentage(percentage: CGFloat) {
         
         let scaleFactor = 1 + (percentage * maxScaleFactor)
+        
+        //feedbackLayer is a stored CALayer property
         feedbackLayer.transform = CATransform3DMakeScale(scaleFactor, scaleFactor, 1)
         
     }
